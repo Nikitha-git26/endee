@@ -1,3 +1,29 @@
+# 🚀 AI Document Search Project (Assignment Submission)
+
+## 📌 Overview
+This project demonstrates a simple AI-based semantic search system using embeddings and similarity search.
+
+## 💡 What it does
+- Takes user query
+- Converts it into embedding
+- Finds most similar result from dataset
+
+## 🧠 Concepts Used
+- Embeddings
+- Semantic Search
+- Vector Database (Endee concept)
+
+## ▶️ How to Run
+pip install sentence-transformers numpy  
+python app.py
+
+## ✅ Example
+Input: What is AI?  
+Output: Artificial intelligence is used in many industries.
+
+---
+
+
 <p align="center">
   <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.svg">

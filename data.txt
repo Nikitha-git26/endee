@@ -1,0 +1,6 @@
+Machine learning is a field of artificial intelligence.
+Python is a popular programming language.
+Artificial intelligence is used in many industries.
+Data science involves statistics and programming.
+Git is used for version control.
+Web development includes frontend and backend
