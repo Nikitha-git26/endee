@@ -36,6 +36,17 @@ This demonstrates a clear understanding of how vector databases like Endee perfo
 - Sentence Transformers  
 - NumPy  
 
+## System Design
+
+- Data Storage: Text data stored locally in data.txt  
+- Embedding Model: Sentence Transformers (all-MiniLM-L6-v2)  
+- Vector Representation: Each document is converted into a dense vector  
+- Query Processing: User query is converted into a vector  
+- Similarity Search: Cosine similarity (dot product) used to compare vectors  
+- Output: Top 3 most relevant documents returned  
+
+This simulates how vector databases like Endee perform semantic retrieval internally.
+
 ## Run Instructions
 
 ```bash
