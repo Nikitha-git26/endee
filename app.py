@@ -1,43 +1,44 @@
 from sentence_transformers import SentenceTransformer
-from endee import EndeeClient
+import numpy as np
 
 # Load model
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-# Initialize Endee
-client = EndeeClient()
-
-# Optional: reset DB to avoid duplicates
-client.reset()
-
-# Load data
+# Load documents
 with open("data.txt", "r") as file:
-    documents = file.read().split("\n")
+    documents = [line.strip() for line in file if line.strip()]
 
-# Store in Endee
-for doc in documents:
-    emb = model.encode(doc)
-
-    client.add({
-        "vector": emb.tolist(),
-        "text": doc
-    })
-
-print("✅ Data stored in Endee")
+# Create embeddings
+doc_embeddings = model.encode(documents)
 
 # Search function
 def search(query):
-    query_embedding = model.encode(query)
+    query_embedding = model.encode([query])[0]
 
-    results = client.search({
-        "vector": query_embedding.tolist(),
-        "top_k": 1
-    })
+    similarities = []
+    for emb in doc_embeddings:
+        sim = np.dot(emb, query_embedding)
+        similarities.append(sim)
 
-    return results[0]["text"]
+    # Get top 3 matches
+    top_indices = np.argsort(similarities)[-3:][::-1]
+    return top_indices
 
-# User input
-query = input("Enter your question: ")
-result = search(query)
+# Generate response
+def generate_answer(query, indices):
+    print("\n💡 Answer:")
+    for i in indices:
+        print("-", documents[i])
 
-print("\nBest Match:", result)
+    print("\n🧠 Explanation:")
+    print("This answer is generated using semantic search by comparing vector embeddings of the query and stored data.")
+
+# Run loop
+while True:
+    query = input("\nAsk your question (type 'exit' to stop): ")
+
+    if query.lower() == "exit":
+        break
+
+    results = search(query)
+    generate_answer(query, results)

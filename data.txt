@@ -1,6 +1,7 @@
-Machine learning is a field of artificial intelligence.
-Python is a popular programming language.
-Artificial intelligence is used in many industries.
-Data science involves statistics and programming.
-Git is used for version control.
-Web development includes frontend and backend
+Artificial Intelligence is the future.
+Machine learning is a subset of AI.
+Deep learning uses neural networks.
+Python is widely used for AI development.
+Vector databases are used for semantic search.
+Endee is a high-performance vector database.
+Semantic search understands meaning, not just keywords.
